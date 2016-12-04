@@ -15,7 +15,7 @@ module.exports = (function(){
     return poem;
   };
   function toWords(poem){
-    var words = poem.replace(/\n/g," ").split(" ").map(function(word){
+    var words = poem.replace(/[^\w ]/g," ").split(" ").map(function(word){
       return word.toUpperCase();
     }).filter(function(word){
       return word && word !== "THE";

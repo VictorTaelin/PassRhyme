@@ -16,7 +16,7 @@ window.onload = function(){
   var main = document.getElementById("main");
 
   var text = document.createElement("textarea");
-  text.cols = 200;
+  text.cols = 100;
   text.rows = 400;
 
   var genRandomButton = document.createElement("button");
@@ -45,9 +45,11 @@ window.onload = function(){
   loadRhymButton.onclick = function(){
     try {
       var rhyme = prompt("poem:");
-      loadWords(poem.toWords(rhyme));
+      var words = poem.toWords(rhyme);
+      if (words.indexOf(-1) !== -1) throw "";
+      loadWords(words);
     } catch (e) {
-      alert(e);
+      alert("Wrong poem");
     }
   };
 
