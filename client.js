@@ -12,37 +12,54 @@ window.onload = function(){
     return words;
   };
 
+  // This code is quite messy, never mind it
+
   var main = document.getElementById("main");
+
   var text = document.createElement("textarea");
   text.cols = 200;
   text.rows = 400;
+
   var genRandomButton = document.createElement("button");
   genRandomButton.innerHTML = "Generate Random Key";
   genRandomButton.onclick = function(){
-    loadKey(randomWords(9, 9));
+    loadWords(randomWords(9, 9));
   };
-  var loadButton = document.createElement("button");
-  loadButton.innerHTML = "Load Key";
-  loadButton.onclick = function(){
+
+  var loadWordsButton = document.createElement("button");
+  loadWordsButton.innerHTML = "Load Key";
+  loadWordsButton.onclick = function(){
     try {
       var key = prompt("key:");
       if (!key) throw "";
       key = key.split(" ");
       if (key.length !== 9) throw "";
       key = key.map(function(n){ return parseInt(n, 16); });
-      loadKey(key);
+      loadWords(key);
     } catch (e) {
-      alert("Chave incorreta");
+      alert("Wrong key");
     }
   };
-  main.appendChild(genRandomButton);
-  main.appendChild(loadButton);
-  main.appendChild(text);
 
-  function loadKey(key){
+  var loadRhymButton = document.createElement("button");
+  loadRhymButton.innerHTML = "Load Poem";
+  loadRhymButton.onclick = function(){
+    try {
+      var rhyme = prompt("poem:");
+      loadWords(poem.toWords(rhyme));
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  main.appendChild(genRandomButton);
+  main.appendChild(loadWordsButton);
+  main.appendChild(loadRhymButton);
+  main.appendChild(text);
+  function loadWords(key){
     text.innerHTML
       = "Key: "+key.map(function(n){return n.toString(16).toUpperCase()}).join(" ")+"\n"
-      + poem(key)+"\n"
+      + poem.fromWords(key)+"\n"
       + "\n"
       + text.innerHTML;
   };
