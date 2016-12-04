@@ -1,7 +1,6 @@
 window.onload = function(){
   var poem = require("./index.js");
   var secureRandom = require("secure-random");
-  var BitArray = require("node-bitarray");
   function randomWords(count, bits){
     var words = [];
     for (var i=0; i<count; ++i){
