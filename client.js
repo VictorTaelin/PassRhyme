@@ -53,10 +53,14 @@ window.onload = function(){
     }
   };
 
-  main.appendChild(genRandomButton);
-  main.appendChild(loadWordsButton);
-  main.appendChild(loadRhymButton);
+  var buttonsDiv = document.createElement("div");
+  buttonsDiv.appendChild(genRandomButton);
+  buttonsDiv.appendChild(loadWordsButton);
+  buttonsDiv.appendChild(loadRhymButton);
+
+  main.appendChilld(buttonsDiv);
   main.appendChild(text);
+
   function loadWords(key){
     text.innerHTML
       = "Key: "+key.map(function(n){return n.toString(16).toUpperCase()}).join(" ")+"\n"
