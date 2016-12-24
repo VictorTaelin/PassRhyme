@@ -58,7 +58,7 @@ window.onload = function(){
   buttonsDiv.appendChild(loadWordsButton);
   buttonsDiv.appendChild(loadRhymButton);
 
-  main.appendChilld(buttonsDiv);
+  main.appendChild(buttonsDiv);
   main.appendChild(text);
 
   function loadWords(key){
